@@ -35,9 +35,6 @@ app.use(cors({
 app.post('/group/create',auth, createGroup)
 app.get('/group/', getGroups)
 app.get('/group/:id',auth, getGroup)
-app.get('/',(req,res) => {
-    res.send('hellooooo')
-})
 
 // socket
 
