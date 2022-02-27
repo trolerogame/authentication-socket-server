@@ -36,16 +36,14 @@ const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 const io = new socket_io_1.Server(server, {
     cors: {
-        origin: "https://authentication-frontend-proyecto.vercel.app/",
-        methods: ["GET", "POST"],
-        credentials: true
+        origin: "https://authentication-frontend-proyecto.vercel.app",
     }
 });
 // config
 app.use((0, express_1.json)());
 app.use((0, express_1.urlencoded)({ extended: true }));
 app.use((0, cors_1.default)({
-    origin: 'https://authentication-frontend-proyecto.vercel.app/'
+    origin: 'https://authentication-frontend-proyecto.vercel.app'
 }));
 // routes 
 app.post('/group/create', auth_1.default, group_controllers_1.createGroup);
