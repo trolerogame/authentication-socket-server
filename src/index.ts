@@ -13,9 +13,8 @@ import './db/connectDB'
 const app = express()
 const server = http.createServer(app)
 const io = new Server(server,{
-
     cors: {
-      origin: "https://authentication-frontend-proyecto.vercel.app/",
+      origin: "https://authentication-frontend-proyecto.vercel.app",
       methods: ["GET", "POST"],
       credentials: true
     }
@@ -26,7 +25,7 @@ const io = new Server(server,{
 app.use(json())
 app.use(urlencoded({extended:true}))
 app.use(cors({
-    origin:'https://authentication-frontend-proyecto.vercel.app/'
+    origin:'https://authentication-frontend-proyecto.vercel.app'
 }))
 
 
