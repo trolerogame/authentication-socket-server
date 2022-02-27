@@ -6,7 +6,7 @@ import {config} from './config'
 import { createGroup,getGroups,getGroup } from './controllers/group.controllers'
 import { createMessage } from './controllers/message.controllers'
 import auth from './auth'
-import './db/connectDB.ts'
+import './db/connectDB'
 
 
 // init 

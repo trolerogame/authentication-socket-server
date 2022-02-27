@@ -30,13 +30,13 @@ const config_1 = require("./config");
 const group_controllers_1 = require("./controllers/group.controllers");
 const message_controllers_1 = require("./controllers/message.controllers");
 const auth_1 = __importDefault(require("./auth"));
-require("./db/connectDB.ts");
+require("./db/connectDB");
 // init 
 const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 const io = new socket_io_1.Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://authentication-frontend-proyecto-p8995hvct-trolerogame.vercel.app/",
         methods: ["GET", "POST"],
         credentials: true
     }
@@ -44,11 +44,16 @@ const io = new socket_io_1.Server(server, {
 // config
 app.use((0, express_1.json)());
 app.use((0, express_1.urlencoded)({ extended: true }));
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: 'https://authentication-frontend-proyecto-p8995hvct-trolerogame.vercel.app/'
+}));
 // routes 
 app.post('/group/create', auth_1.default, group_controllers_1.createGroup);
 app.get('/group/', group_controllers_1.getGroups);
 app.get('/group/:id', auth_1.default, group_controllers_1.getGroup);
+app.get('/', (req, res) => {
+    res.send('hellooooo');
+});
 // socket
 io.on('connect', (socket) => {
     socket.on('message', async (data) => {
