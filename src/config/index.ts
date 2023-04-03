@@ -1,8 +1,9 @@
-import {config as configDev} from 'dotenv'
-configDev()
+import dotenv from 'dotenv'
+dotenv.config()
 
 export const config = {
     port:process.env.PORT,
-    server:process.env.SERVER,
-    secret:process.env.SECRET as string
+    serverDb:process.env.SERVER,
+    secret:process.env.SECRET as string,
+    originCors:process.env.ORIGINS_CORS
 }

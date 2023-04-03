@@ -1,8 +1,8 @@
 import express, {json, urlencoded} from 'express'
 import http from 'http'
 import cors from 'cors'
-import {Server} from 'socket.io'
-import {config} from './config'
+import { Server } from 'socket.io'
+import { config } from './config'
 import { createGroup,getGroups,getGroup } from './controllers/group.controllers'
 import { createMessage } from './controllers/message.controllers'
 import auth from './auth'
@@ -16,7 +16,7 @@ const io = new Server(server,{
     cors: {
       origin: "https://authentication-frontend-proyecto.vercel.app",
     }
-  })
+})
 
 // config
 

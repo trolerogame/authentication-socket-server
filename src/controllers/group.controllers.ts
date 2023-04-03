@@ -20,8 +20,7 @@ export const createGroup = async (req: Req, res: Res) => {
 
 export const getGroups = async (req: Req, res: Res) => {
 	try {
-		let groups = await Group.find()
-		groups = groups.map((group) => ({ name: group.name, _id: group._id }))
+		let groups = await Group.find({},'_id name') // add filter 
 		res.json(groups)
 	} catch (err) {
 		res.status(403).json({})
@@ -33,7 +32,7 @@ export const getGroup = async (req: Req, res: Res) => {
 	const idGroup = req.params.id
 	try {
 		const dataGroup = await Group.findById(idGroup)
-		if (dataGroup.members !== res.locals.userId)
+		if (dataGroup?.members !== res.locals.userId)
 			await Group.findByIdAndUpdate(idGroup, {
 				$addToSet: { members: [res.locals.userId] },
 			})
